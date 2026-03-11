@@ -1,0 +1,32 @@
+[
+  {
+    "id": "alpha",
+    "name": "Alpha Site",
+    "url": "https://alpha.example.com/",
+    "image": "https://alpha.example.com/button.png"
+  },
+  {
+    "id": "bravo",
+    "name": "Bravo Site",
+    "url": "https://bravo.example.com/",
+    "image": "https://bravo.example.com/button.png"
+  },
+  {
+    "id": "charlie",
+    "name": "Charlie Site",
+    "url": "https://charlie.example.com/",
+    "image": "https://charlie.example.com/button.png"
+  },
+  {
+    "id": "delta",
+    "name": "Delta Site",
+    "url": "https://delta.example.com/",
+    "image": "https://delta.example.com/button.png"
+  },
+  {
+    "id": "echo",
+    "name": "Echo Site",
+    "url": "https://echo.example.com/",
+    "image": "https://echo.example.com/button.png"
+  }
+]
