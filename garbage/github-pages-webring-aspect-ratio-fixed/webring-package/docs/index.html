@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Webring</title>
+  <link rel="stylesheet" href="./webring.css">
+  <style>
+    body {
+      font-family: system-ui, sans-serif;
+      margin: 2rem;
+      line-height: 1.5;
+    }
+    code, pre {
+      font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+    }
+    pre {
+      padding: 1rem;
+      border: 1px solid #ddd;
+      overflow: auto;
+      background: #fafafa;
+      white-space: pre-wrap;
+    }
+    .preview-block {
+      margin: 1.25rem 0 2rem;
+    }
+  </style>
+</head>
+<body>
+  <h1>GitHub Pages Webring</h1>
+  <p>This repo is the central source for the ring. Update <code>sites.json</code> to change membership order.</p>
+  <p>Example assets are included in <code>docs/images/88x31/example-button.png</code> and <code>docs/images/scalable/ice-cube.svg</code>.</p>
+
+  <h2>Live previews</h2>
+
+  <div class="preview-block">
+    <h3>noimages</h3>
+    <div id="webring-preview-noimages" data-webring-site="charlie" data-webring-widget="noimages"></div>
+    <script src="./webring.js" data-target="webring-preview-noimages"></script>
+  </div>
+
+  <div class="preview-block">
+    <h3>88x31</h3>
+    <div id="webring-preview-88x31" data-webring-site="charlie" data-webring-widget="88x31"></div>
+    <script src="./webring.js" data-target="webring-preview-88x31"></script>
+  </div>
+
+  <div class="preview-block">
+    <h3>scalable</h3>
+    <div id="webring-preview-scalable" data-webring-site="alpha" data-webring-widget="scalable" style="--webring-max-width: 720px;"></div>
+    <script src="./webring.js" data-target="webring-preview-scalable"></script>
+  </div>
+
+  <h2>Member site embed</h2>
+  <pre>&lt;link rel="stylesheet" href="https://YOURNAME.github.io/YOURREPO/webring.css"&gt;
+
+&lt;div id="webring-noimages" data-webring-site="charlie" data-webring-widget="noimages"&gt;&lt;/div&gt;
+&lt;script src="https://YOURNAME.github.io/YOURREPO/webring.js" data-target="webring-noimages" defer&gt;&lt;/script&gt;
+
+&lt;div id="webring-88x31" data-webring-site="charlie" data-webring-widget="88x31"&gt;&lt;/div&gt;
+&lt;script src="https://YOURNAME.github.io/YOURREPO/webring.js" data-target="webring-88x31" defer&gt;&lt;/script&gt;
+
+&lt;div id="webring-scalable" data-webring-site="charlie" data-webring-widget="scalable" style="--webring-max-width: 720px;"&gt;&lt;/div&gt;
+&lt;script src="https://YOURNAME.github.io/YOURREPO/webring.js" data-target="webring-scalable" defer&gt;&lt;/script&gt;</pre>
+</body>
+</html>

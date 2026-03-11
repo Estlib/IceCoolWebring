@@ -1,0 +1,45 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 2044 720" role="img" aria-labelledby="title desc">
+  <title id="title">Ice cube example banner</title>
+  <desc id="desc">A glossy blue ice cube floating over a cool gradient background.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#081826"/>
+      <stop offset="55%" stop-color="#104b73"/>
+      <stop offset="100%" stop-color="#7be0ff"/>
+    </linearGradient>
+    <linearGradient id="top" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#f3fdff"/>
+      <stop offset="100%" stop-color="#8de7ff"/>
+    </linearGradient>
+    <linearGradient id="left" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#92e2ff"/>
+      <stop offset="100%" stop-color="#35afe7"/>
+    </linearGradient>
+    <linearGradient id="right" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#52c7ff"/>
+      <stop offset="100%" stop-color="#0d75ba"/>
+    </linearGradient>
+    <filter id="shadow" x="-30%" y="-30%" width="160%" height="160%">
+      <feDropShadow dx="0" dy="24" stdDeviation="28" flood-color="#031019" flood-opacity="0.45"/>
+    </filter>
+  </defs>
+  <g transform="translate(382,0) scale(0.8)">
+  <rect width="1600" height="900" fill="url(#bg)"/>
+  <g opacity="0.18" fill="#dff8ff">
+    <circle cx="180" cy="160" r="24"/>
+    <circle cx="1440" cy="140" r="18"/>
+    <circle cx="1330" cy="720" r="20"/>
+    <circle cx="250" cy="720" r="14"/>
+  </g>
+  <g filter="url(#shadow)">
+    <polygon points="800,160 1130,330 800,510 470,330" fill="url(#top)"/>
+    <polygon points="470,330 800,510 800,820 470,640" fill="url(#left)"/>
+    <polygon points="1130,330 800,510 800,820 1130,640" fill="url(#right)"/>
+    <polyline points="800,160 1130,330 1130,640 800,820 470,640 470,330 800,160" fill="none" stroke="#dff8ff" stroke-width="16" stroke-linejoin="round"/>
+    <line x1="800" y1="160" x2="800" y2="820" stroke="#dff8ff" stroke-width="12" opacity="0.7"/>
+    <line x1="470" y1="330" x2="800" y2="510" stroke="#dff8ff" stroke-width="12" opacity="0.7"/>
+    <line x1="1130" y1="330" x2="800" y2="510" stroke="#dff8ff" stroke-width="12" opacity="0.7"/>
+  </g>
+  <text x="800" y="130" text-anchor="middle" font-family="Verdana,Arial,sans-serif" font-size="72" font-weight="700" fill="#eafcff" letter-spacing="8">ICE CUBE</text>
+  </g>
+</svg>
