@@ -1,0 +1,118 @@
+.webring-widget {
+  display: grid;
+  gap: 8px;
+  font: inherit;
+}
+
+.webring-widget--88x31 {
+  grid-template-columns: repeat(2, 88px);
+  width: max-content;
+}
+
+.webring-widget--scalable {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  width: min(100%, var(--webring-max-width, 720px));
+}
+
+.webring-widget--noimages {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  width: min(100%, var(--webring-max-width, 420px));
+}
+
+.webring-button,
+.webring-text-link {
+  box-sizing: border-box;
+  border: 1px solid #c8c8c8;
+  background: #fff;
+  color: inherit;
+  text-decoration: none;
+}
+
+.webring-button:hover,
+.webring-text-link:hover {
+  transform: translateY(-1px);
+}
+
+.webring-button {
+  display: inline-flex;
+  overflow: hidden;
+  align-items: center;
+  justify-content: center;
+}
+
+.webring-button--88x31 {
+  width: 88px;
+  height: 31px;
+}
+
+.webring-button--scalable {
+  width: 100%;
+  min-width: 0;
+  min-height: 0;
+}
+
+.webring-button img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.webring-button--88x31 img {
+  image-rendering: pixelated;
+  object-fit: fill;
+}
+
+.webring-button--scalable img {
+  height: auto;
+  aspect-ratio: auto;
+  object-fit: contain;
+}
+
+.webring-fallback {
+  display: none;
+  font-size: 10px;
+  line-height: 1.1;
+  padding: 2px 4px;
+  text-align: center;
+  color: inherit;
+  word-break: break-word;
+}
+
+.webring-broken-image .webring-fallback {
+  display: block;
+}
+
+.webring-text-link {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  min-width: 0;
+  padding: 8px 10px;
+}
+
+.webring-text-label {
+  font-size: 11px;
+  opacity: 0.7;
+}
+
+.webring-text-name {
+  font-size: 14px;
+  line-height: 1.2;
+  word-break: break-word;
+}
+
+.webring-text-current,
+.webring-button--current {
+  opacity: 0.72;
+  cursor: default;
+}
+
+.webring-message {
+  box-sizing: border-box;
+  display: inline-block;
+  border: 1px solid #c8c8c8;
+  background: #fff;
+  padding: 8px 10px;
+  font: inherit;
+}
