@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Webring</title>
+  <link rel="stylesheet" href="./webring.css">
+  <style>
+    body {
+      font-family: system-ui, sans-serif;
+      margin: 2rem;
+      line-height: 1.5;
+    }
+    code, pre {
+      font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+    }
+    pre {
+      padding: 1rem;
+      border: 1px solid #ddd;
+      overflow: auto;
+      background: #fafafa;
+    }
+  </style>
+</head>
+<body>
+  <h1>GitHub Pages Webring</h1>
+  <p>This repo is the central source for the ring. Update <code>sites.json</code> to change membership order.</p>
+
+  <h2>Live preview</h2>
+  <div id="webring-preview" data-webring-site="charlie"></div>
+  <script src="./webring.js" data-target="webring-preview"></script>
+
+  <h2>Member site embed</h2>
+  <pre>&lt;link rel="stylesheet" href="https://YOURNAME.github.io/YOURREPO/webring.css"&gt;
+
+&lt;div id="webring" data-webring-site="charlie"&gt;&lt;/div&gt;
+
+&lt;script
+  src="https://YOURNAME.github.io/YOURREPO/webring.js"
+  data-target="webring"
+  defer
+&gt;&lt;/script&gt;</pre>
+</body>
+</html>

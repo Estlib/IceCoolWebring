@@ -1,0 +1,51 @@
+.webring-widget {
+  display: block;
+  max-width: max-content;
+  font: inherit;
+}
+
+.webring-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 88px);
+  gap: 8px;
+  align-items: center;
+  justify-content: start;
+}
+
+.webring-button {
+  display: inline-flex;
+  width: 88px;
+  height: 31px;
+  overflow: hidden;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  border: 1px solid #c8c8c8;
+  background: #fff;
+  box-sizing: border-box;
+}
+
+.webring-button:hover {
+  transform: translateY(-1px);
+}
+
+.webring-button img {
+  display: block;
+  width: 88px;
+  height: 31px;
+  image-rendering: pixelated;
+}
+
+.webring-fallback {
+  display: none;
+  font-size: 10px;
+  line-height: 1.1;
+  padding: 2px 4px;
+  text-align: center;
+  color: inherit;
+  word-break: break-word;
+}
+
+.webring-broken-image .webring-fallback {
+  display: block;
+}
