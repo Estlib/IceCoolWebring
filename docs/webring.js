@@ -1,26 +1,19 @@
 (function () {
   const script = document.currentScript;
-  const targetId = script && script.dataset && script.dataset.target ? script.dataset.target : "webring";
-  const target = document.getElementById(targetId);
-
-  if (!target) return;
-
-  const siteId = target.dataset.webringSite;
-  const widgetType = (
-    (target.dataset.webringWidget || (script && script.dataset && script.dataset.widget) || "88x31")
-      .toLowerCase()
-      .trim()
-  );
-  const jsonUrl = (script && script.dataset && script.dataset.src)
-    ? script.dataset.src
-    : new URL("./sites.json", script.src).href;
+  const defaultTargetId = script?.dataset.target || "webring";
+  const jsonUrl = script?.dataset.src || new URL("./sites.json", script.src).href;
   const webringBaseUrl = new URL("./", script.src).href;
 
-  if (!siteId) {
-    target.textContent = "Webring error: missing data-webring-site.";
-    return;
-  }
+  window.initializeWebring = async function (targetId = defaultTargetId) {
+    const target = document.getElementById(targetId);
+    if (!target) return;
 
+    const siteId = target.dataset.webringSite;
+    const widgetType = (target.dataset.webringWidget || script?.dataset.widget || "88x31").toLowerCase().trim();
+    if (!siteId) {
+      target.textContent = "Webring error: missing data-webring-site.";
+      return;
+    }
 
   function normalizeUrl(url) {
     try {
@@ -217,49 +210,61 @@
     `;
   }
 
-  fetch(jsonUrl, { cache: "no-store" })
-    .then(function (response) {
-      if (!response.ok) {
-        throw new Error("HTTP " + response.status);
+  try {
+    const response = await fetch(jsonUrl, { cache: "no-store" });
+    if (!response.ok) throw new Error("HTTP " + response.status);
+    let sites = await response.json();
+    if (!Array.isArray(sites)) {
+      renderInactive("webring inactive");
+      return;
+    }
+    sites = sites.filter(site => site && site.url && !isWebringAddress(site.url));
+    if (sites.length === 0) {
+      renderInactive("webring inactive");
+      return;
+    }
+    let currentIndex = sites.findIndex(site => site.id === siteId);
+    if (currentIndex === -1 && isCurrentPageWebring()) currentIndex = 0;
+    if (currentIndex === -1) {
+      renderInactive("this site is not part of this webring");
+      return;
+    }
+    if (sites.length < 5) renderAllSites(sites, currentIndex);
+    else renderNeighbors(sites, currentIndex);
+  } catch (error) {
+    target.textContent = "Webring error: " + error.message;
+  }
+  };
+
+  // Works for both normally loaded HTML and HTML inserted later via AJAX.
+  // Only initialize when a widget container is newly added, not when
+  // the widget itself updates its contents (avoids observer loops).
+  function initializeIn(node) {
+    if (!(node instanceof Element)) return;
+    const targets = [];
+    if (node.matches('[data-webring-site]')) targets.push(node);
+    node.querySelectorAll('[data-webring-site]').forEach(el => targets.push(el));
+    for (const target of targets) {
+      if (target.id) window.initializeWebring(target.id);
+    }
+  }
+
+  function startWebring() {
+    // Standard page load: find any existing widgets.
+    initializeIn(document.body);
+
+    // Dynamic page load: detect newly inserted widget containers.
+    const observer = new MutationObserver(records => {
+      for (const record of records) {
+        for (const node of record.addedNodes) initializeIn(node);
       }
-      return response.json();
-    })
-    .then(function (sites) {
-      if (!Array.isArray(sites)) {
-        renderInactive("webring inactive");
-        return;
-      }
-
-      sites = sites.filter(function (site) {
-        return site && site.url && !isWebringAddress(site.url);
-      });
-
-      if (sites.length === 0) {
-        renderInactive("webring inactive");
-        return;
-      }
-
-      let currentIndex = sites.findIndex(function (site) {
-        return site.id === siteId;
-      });
-
-      if (currentIndex === -1 && isCurrentPageWebring() && sites.length > 0) {
-        currentIndex = 0;
-      }
-
-      if (currentIndex === -1) {
-        renderInactive("this site is not part of this webring");
-        return;
-      }
-
-      if (sites.length < 5) {
-        renderAllSites(sites, currentIndex);
-        return;
-      }
-
-      renderNeighbors(sites, currentIndex);
-    })
-    .catch(function (error) {
-      target.textContent = "Webring error: " + error.message;
     });
+    observer.observe(document.body, { childList: true, subtree: true });
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', startWebring, { once: true });
+  } else {
+    startWebring();
+  }
 })();

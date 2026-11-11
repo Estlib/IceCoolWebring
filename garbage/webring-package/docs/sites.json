@@ -1,0 +1,36 @@
+[
+  {
+    "id": "alpha",
+    "name": "Alpha Site",
+    "url": "https://alpha.example.com/",
+    "image": "./images/88x31/example-button.png",
+    "image88x31": "./images/88x31/example-button.png",
+    "imageScalable": "./images/scalable/ice-cube.svg"
+  },
+  {
+    "id": "bravo",
+    "name": "Bravo Site",
+    "url": "https://bravo.example.com/",
+    "image": "./images/88x31/example-button.png",
+    "image88x31": "./images/88x31/example-button.png",
+    "imageScalable": "./images/scalable/ice-cube.svg"
+  },
+  {
+    "id": "charlie",
+    "name": "Charlie Site",
+    "url": "https://charlie.example.com/",
+    "image": "https://charlie.example.com/button.png"
+  },
+  {
+    "id": "delta",
+    "name": "Delta Site",
+    "url": "https://delta.example.com/",
+    "image": "https://delta.example.com/button.png"
+  },
+  {
+    "id": "echo",
+    "name": "Echo Site",
+    "url": "https://echo.example.com/",
+    "image": "https://echo.example.com/button.png"
+  }
+]
